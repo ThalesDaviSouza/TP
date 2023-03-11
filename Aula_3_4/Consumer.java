@@ -1,14 +1,15 @@
-public class Consumer implements Runnable {
-    PilhaSincronizada pilha ;
 
-    public Consumer(PilhaSincronizada pilha ) {
+public class Consumer implements Runnable {
+    PilhaSincronizada pilha;
+
+    public Consumer(PilhaSincronizada pilha){
         this.pilha = pilha ;
     }
 
     public void run () {
-        int colorIdx ;
+        int colorIdx = 0;
         for(int i = 0; i < 20; i ++) {
-            colorIdx = pilha . pop () ;
+            colorIdx = pilha.pop();
             System.out.println("Usado : " + colorIdx);
             try {
                 Thread.sleep((int)(Math.random() * 5000));

@@ -3,12 +3,22 @@ public class PilhaSincronizada {
     private int [] buffer = new int [10];
 
     public synchronized int pop () {
-        index--;
+        try{
+            this.wait();
+            index--;
+            this.notify();
+        }catch(Exception e){}
         return buffer[index];
     }
 
-    public synchronized void push (int i) {
-        buffer[index] = i;
-        index++;
+    public synchronized void push (int i) 
+    {
+        try {
+            this.wait();
+            buffer[index] = i;
+            index++;
+            this.notify();
+        } catch (Exception e) {
+        }
     }
 }
