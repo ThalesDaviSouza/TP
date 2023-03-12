@@ -3,12 +3,12 @@ public class Consumer implements Runnable {
     PilhaSincronizada pilha;
 
     public Consumer(PilhaSincronizada pilha){
-        this.pilha = pilha ;
+        this.pilha = pilha;
     }
 
     public void run () {
-        int colorIdx = 0;
-        for(int i = 0; i < 20; i ++) {
+        int colorIdx;
+        for(int i = 0; i < 30; i ++) {
             colorIdx = pilha.pop();
             System.out.println("Usado : " + colorIdx);
             try {
